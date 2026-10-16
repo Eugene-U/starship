@@ -1,0 +1,81 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+scan_timeout = 30
+command_timeout = 500
+
+format = """
+[](purple)\
+$os\
+$directory\
+[](bg:pink fg:purple)\
+$git_branch\
+[](fg:pink bg:orange)\
+$time\
+[ ](fg:orange)\
+$cmd_duration\
+$line_break\
+$character
+"""
+
+
+palette = 'dracula'
+
+[os]
+disabled = false
+style = "bg:purple fg:font"
+
+[os.symbols]
+Arch = "󰣇"
+
+[directory]
+style = "bg:purple fg:font"
+format = "[ $path ]($style)"
+truncation_length = 5
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Developer" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:pink"
+format = '[[ $symbol $branch ](fg:font bg:pink)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:yellow"
+format = '[[  $time ](fg:font bg:orange)]($style)'
+
+[line_break]
+disabled = true
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:yellow)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:turquoise)'
+vimcmd_replace_symbol = '[❮](bold fg:turquoise)'
+vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+
+[cmd_duration]
+show_milliseconds = true
+format = " in $duration "
+style = "bg:turquoise"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+[palettes.dracula]
+purple = "#bd93f9"
+pink = "#ff79c6"
+orange = "#ff996e"
+yellow = "#f1fa8c"
+green = "#69ff94"
+turquoise = "#8be9fd"
+font = "#181926"
